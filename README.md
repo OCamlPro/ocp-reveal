@@ -15,8 +15,8 @@ presentation can still be viewed elsewhere.
 
 Download and install these packages:
 
-* `ocp-build` : http://www.typerex.org/ocp-build.htmlhttp://www.typerex.org/ocp-build.html
-* `omd` : http://www.typerex.org/ocp-build.htmlhttp://www.typerex.org/ocp-build.html
+* `ocp-build` : http://www.typerex.org/ocp-build.html
+* `omd` : http://www.typerex.org/ocp-build.html
 * `js_of_ocaml` : http://ocsigen.org/js_of_ocaml/
 
 
@@ -24,9 +24,13 @@ Download and install these packages:
 
     $ opam install ocp-build js_of_ocaml omd
 
-# Build
+# Build with Makefile
 
-    $ make
+    $ make examples
+
+# Build with ocp-build
+
+    $ make all-ocp
 
 # Example
 
