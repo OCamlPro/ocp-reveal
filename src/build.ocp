@@ -1,0 +1,29 @@
+(*****************************************************************************)
+(*                                                                           *)
+(*  Copyright 2015 OCamlPro                                                  *)
+(*                                                                           *)
+(*  All rights reserved.  This file is distributed under the terms of        *)
+(*  the Lesser GNU Public License version 3.0.                               *)
+(*                                                                           *)
+(*  This software is distributed in the hope that it will be useful,         *)
+(*  but WITHOUT ANY WARRANTY; without even the implied warranty of           *)
+(*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the            *)
+(*  Lesser GNU General Public License for more details.                      *)
+(*                                                                           *)
+(*****************************************************************************)
+
+begin library "ocp-reveal"
+  has_asm = false
+  files = [
+    "external_js.ml"
+    "js_utils.ml"
+    "reveal.ml"
+    "slides.ml"
+    "html.ml"
+  ]
+  requires = [
+    "omd"
+    "js_of_ocaml"
+    "js_of_ocaml.camlp4-syntax"
+  ]
+end

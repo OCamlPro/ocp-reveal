@@ -1,0 +1,29 @@
+(* Define "lwt.camlp4-syntax", Lwt's syntax for OCaml files *)
+
+begin
+  generated = true
+  dirname = [ "%{lwt_FULL_SRC_DIR}%" ]
+
+  begin objects "lwt.camlp4-syntax.objects"
+    requires = [ "lwt.syntax" ]
+  end
+
+  begin library "lwt-syntax-options"
+    files = [ "pa_lwt.ml" ]
+    requires = [ "camlp4lib" ]
+  end
+
+  begin library "lwt-syntax-log"
+    files = [ "pa_lwt.ml" ]
+    requires = [ "lwt-syntax-options" "camlp4lib" ]
+  end
+
+  begin library "lwt-syntax"
+    files = [ "pa_lwt.ml" ]
+    requires = [  "lwt-syntax-log" "camlp4lib" ]
+  end
+
+  begin syntax "lwt.camlp4-syntax"
+    requires = [ "lwt-syntax" "camlp4o" ]
+  end
+end
