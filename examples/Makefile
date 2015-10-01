@@ -14,6 +14,7 @@ $(TARGET).byte:
 
 $(TARGET).js: $(TARGET).byte
 	js_of_ocaml $(TARGET).byte
+	mkdir -p ../js
 	cp $(TARGET).js ../js
 
 clean:
