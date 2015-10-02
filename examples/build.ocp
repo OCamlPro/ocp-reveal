@@ -14,3 +14,20 @@ begin program "test-ocp-reveal"
     )]
   requires = [ "ocp-reveal" ]
 end
+
+begin program "test-ocp-reveal-2"
+  has_asm = false
+  files = [ "examples_2.ml" ]
+  build_targets = [ "../js/ocp-reveal-2.js" ]
+  build_rules = [
+    "../js/ocp-reveal-2.js" (
+      sources = [ %byte_exe( p = "test-ocp-reveal-2") ]
+      commands = [
+        { "js_of_ocaml" "-I" "." "+weak.js"
+            "-o" "../js/ocp-reveal-2.js"
+             %byte_exe( p = "test-ocp-reveal-2") }
+      ]
+      build_target = true
+    )]
+  requires = [ "ocp-reveal" ]
+end

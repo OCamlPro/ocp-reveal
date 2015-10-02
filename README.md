@@ -37,7 +37,7 @@ Download and install these packages:
 To try and see your slides, you can check an example in the `examples`
 directory:
 
-    $ make && firefox examples/index.html
+    $ make && firefox examples/example-1.html
 
  or you can see a demo at :
 

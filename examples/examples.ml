@@ -2,6 +2,46 @@
 open Html
 open Slides
 
+let slide_0 =
+  frame { default with
+    title = title5 "Make your presentation with OCaml";
+    content = {|
+You can write your presentation in OCaml thant to `ocp-reveal`:
+```ocaml
+let my_slide =
+  frame { defaut with
+    title = title3 "Some title";
+    content = "Some dummy content";
+  }
+```
+|}
+  }
+
+let slide_00 =
+  let content = "
+All the fields are optional, so you can edit and set
+the properties that you want to change :
+
+```ocaml
+type slide = {
+   title : Omd.element;
+   content : string;
+   transition : transition;
+   video: path option;
+   text_color : color;
+   background_color : color;
+   background_img : path option;
+   background_video : path option;
+   background_embed : path option;
+}
+```
+" in
+
+  frame { default with
+    title = title5 "Settings";
+    content;
+  }
+
 let slide_1 =
   let open Omd in
   let content = "You can use Omd syntax to create your slide :" in
@@ -84,7 +124,7 @@ let slide_6 =
       content = \"Some content\";
       background_img = path_to_img;
     }" in
-  frame { default with
+  frame { convex with
     title = title3 "Add a background image to your slide";
     content;
     background_color = White;
@@ -92,14 +132,14 @@ let slide_6 =
   }
 
 let slide_7 =
-  frame { default with
+  frame { convex with
     title = title3 "Math equations";
-    content = "$\\delta \\rightarrow \\Lambda$";
+    content = {| $\delta \rightarrow \Lambda$ |};
     background_color = Black;
   }
 
 let slides =
-  [ slide_1; slide_video; slide_2; slide_3; slide_4; slide_5; slide_6; slide_7]
+  [ slide_0; slide_00; slide_1; slide_video; slide_2; slide_3; slide_4; slide_5; slide_6; slide_7]
 
 let _ =
   Html.make "Demo ocp-reveal" slides
