@@ -86,12 +86,16 @@ let concave = { default with transition = Concave }
 let fade    = { default with transition = Fade }
 let zoom    = { default with transition = Zoom }
 
+let slides_ref : slide_t list ref = ref []
+
 let frame sec =
   let content = of_string sec.content in
-  Single ([
+  let slide = Single ([
     sec.title;
     paragraph content
-  ], sec)
+  ], sec) in
+  slides_ref := slide :: !slides_ref;
+  slide
 
 let from_file file =
  let load_file f =

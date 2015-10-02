@@ -115,6 +115,10 @@ let body slides =
   Dom.appendChild div_reveal div_slides;
   Dom.appendChild Dom_html.window##document##body div_reveal
 
+let auto_make title =
+  header title;
+  body (List.rev !Slides.slides_ref);
+  Reveal.initialize ()
 
 let make title slides =
   header title;

@@ -64,5 +64,7 @@ val concave : slide
 val fade : slide
 val zoom : slide
 
+val slides_ref : slide_t list ref
+
 (** Create a new frame. *)
 val frame : slide -> slide_t
