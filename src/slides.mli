@@ -64,6 +64,7 @@ val concave : slide
 val fade : slide
 val zoom : slide
 
+val pause : string -> string
 val slides_ref : slide_t list ref
 
 (** Create a new frame. *)

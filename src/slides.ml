@@ -86,6 +86,8 @@ let concave = { default with transition = Concave }
 let fade    = { default with transition = Fade }
 let zoom    = { default with transition = Zoom }
 
+let pause str = str ^ {| <!-- .element: class="fragment" --> |} ^ "\n\n\n"
+
 let slides_ref : slide_t list ref = ref []
 
 let frame sec =
