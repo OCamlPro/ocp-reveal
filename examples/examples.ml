@@ -142,4 +142,4 @@ let slides =
   [ slide_0; slide_00; slide_1; slide_video; slide_2; slide_3; slide_4; slide_5; slide_6; slide_7]
 
 let _ =
-  Html.make "Demo ocp-reveal" slides
+  Html.make_config "Demo ocp-reveal" slides

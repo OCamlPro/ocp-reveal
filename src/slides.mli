@@ -14,7 +14,11 @@
 
 type transition = None | Fade | Slide | Convex | Concave | Zoom
 
-type color = Black | White | Blue | Red | Color of string
+type speed = Default | Fast | Slow
+
+type color = Black | White | Blue | Red | Green | Yellow | Color of string
+
+type theme = Black_theme | Night_theme | Blood_theme
 
 type path = string
 
@@ -28,6 +32,7 @@ type slide = {
   background_img : path option;
   background_video : path option;
   background_embed : path option;
+  theme : theme;
 }
 
 type slide_t =
@@ -52,9 +57,9 @@ val paragraph : Omd.t -> Omd.element
 val itemize : string list -> Omd.element
 val enumerate : string list -> Omd.element
 
-val of_transition : transition -> string
-
-val of_color : color -> string
+val string_of_transition : transition -> string
+val string_of_speed : speed -> string
+val string_of_color : color -> string
 
 (** Predefine slide named by effect transition. *)
 val default : slide

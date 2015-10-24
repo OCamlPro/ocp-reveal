@@ -45,6 +45,9 @@ let highlight_js =
 let note_js =
   "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js"
 
+let note_client_js =
+  "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes-server/client.js"
+
 let math_js =
   "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/math/math.js"
 
@@ -53,3 +56,13 @@ let zoom_js =
 
 let remote_js =
   "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/remotes/remotes.js"
+
+
+let black_theme =
+  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/black.css"
+
+let night_theme =
+  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/night.css"
+
+let blood_theme =
+  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/blood.css"

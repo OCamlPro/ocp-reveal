@@ -46,12 +46,17 @@ let rec mk_sections slides s =
   let open Slides in
   match slides with
   | Single (content, config) ->
+    begin match config.theme with
+    | Black_theme -> ()
+    | Night_theme -> link_css night_theme
+    | Blood_theme -> link_css blood_theme
+    end;
     let section = doc##createElement (_s "section") in
     section##setAttribute(_s "data-markdown", _s "");
     s##setAttribute(_s "data-transition",
-                    _s (of_transition config.transition));
+                    _s (string_of_transition config.transition));
     s##setAttribute(_s "data-background",
-                    _s (of_color config.background_color));
+                    _s (string_of_color config.background_color));
     begin match config.background_img with
     | None -> ()
     | Some img_path ->
@@ -115,12 +120,34 @@ let body slides =
   Dom.appendChild div_reveal div_slides;
   Dom.appendChild Dom_html.window##document##body div_reveal
 
-let auto_make title =
+
+(* Automatically creates slides which was registered by the frame
+   function and set the title of the presentation with [title]
+   argument. Use [Reveal.default_global_config] to initialize
+   slides. *)
+let auto_make_config title =
   header title;
   body (List.rev !Slides.slides_ref);
   Reveal.initialize ()
 
-let make title slides =
+(* Automatically creates slides which was registered by the frame
+   function. Set the title of the presentation with [title] argument.
+   Use configuration to initialize slides. *)
+let auto_make configuration title =
+  header title;
+  body (List.rev !Slides.slides_ref);
+  Reveal.initialize ~configuration ()
+
+(* Creates slides with [slides] and set the title of the presentation
+   with [title]. Use [configuration] to initialize slides. *)
+let make configuration title slides =
+  header title;
+  body slides;
+  Reveal.initialize ~configuration ()
+
+(* Creates slides with [slides] and set the title of the presentation
+   with [title]. Use [Reveal.default_global_config] to initialize slides. *)
+let make_config title slides =
   header title;
   body slides;
   Reveal.initialize ()

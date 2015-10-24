@@ -16,7 +16,11 @@ open Omd
 
 type transition = None | Fade | Slide | Convex | Concave | Zoom
 
-type color = Black | White | Blue | Red | Color of string
+type speed = Default | Fast | Slow
+
+type color = Black | White | Blue | Red | Green | Yellow | Color of string
+
+type theme = Black_theme | Night_theme | Blood_theme
 
 type path = string (* xxx maybe use a special type path ?  *)
 
@@ -30,6 +34,7 @@ type slide = {
   background_img : path option;
   background_video : path option;
   background_embed : path option;
+  theme : theme;
 }
 
 type slide_t =
@@ -55,7 +60,7 @@ let paragraph pars = Paragraph pars
 let itemize items = Omd.Ul (List.map (fun itemize -> [text itemize]) items)
 let enumerate items = Omd.Ol (List.map (fun itemize -> [text itemize]) items)
 
-let of_transition = function
+let string_of_transition = function
   | None    -> "none"
   | Fade    -> "fade"
   | Slide   -> "slide"
@@ -63,10 +68,19 @@ let of_transition = function
   | Concave -> "concave"
   | Zoom    -> "zoom"
 
-let of_color = function
-  | Black    -> "#000000"
-  | White   -> "#FFFFFF"
-  | _ -> "#000000"
+let string_of_speed = function
+  | Default -> "default"
+  | Fast -> "fast"
+  | Slow -> "slow"
+
+let string_of_color = function
+  | Black   -> "Black"
+  | White   -> "White"
+  | Blue    -> "Blue"
+  | Red     -> "Red"
+  | Green   -> "Green"
+  | Yellow  -> "Yellow"
+  | Color s -> s
 
 let default = {
   title = Text "";
@@ -78,6 +92,7 @@ let default = {
   background_img = None;
   background_video = None;
   background_embed = None;
+  theme = Black_theme;
 }
 
 let slide = default
@@ -86,7 +101,10 @@ let concave = { default with transition = Concave }
 let fade    = { default with transition = Fade }
 let zoom    = { default with transition = Zoom }
 
-let pause str = str ^ {| <!-- .element: class="fragment" --> |} ^ "\n\n\n"
+let pause str =
+  Printf.sprintf "%s%s\n\n\n"
+    str
+    " <!-- .element: class=\"fragment\" --> "
 
 let slides_ref : slide_t list ref = ref []
 

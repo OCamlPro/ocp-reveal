@@ -1,8 +1,8 @@
 SOURCES=\
   external_js.ml \
   js_utils.mli js_utils.ml \
-  reveal.mli reveal.ml \
   slides.mli slides.ml \
+  reveal.mli reveal.ml \
   html.ml
 
 PACKAGES= \
@@ -20,4 +20,4 @@ $(TARGET).cma:
 	ocamlfind ocamlc $(PACKAGES) $(SYNTAXES) -linkpkg $(SOURCES) -a -o ocp-reveal.cma
 
 clean:
-	@rm -f *.o *.js *.byte *.cmo *.cmi *.cma
+	@rm -f *.o *.js *.byte *.cmo *.cmi *.cma *.cmt *.cmti

@@ -62,4 +62,4 @@ frame { slide with
 
 
 let _ =
-    Html.auto_make "Demo ocp-reveal - auto"
+  Html.auto_make "Demo ocp-reveal - auto"

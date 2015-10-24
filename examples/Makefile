@@ -27,4 +27,4 @@ $(TARGET2).js: $(TARGET2).byte
 	cp $(TARGET2).js ../js
 
 clean:
-	@rm -f *.o *.js *.byte *.cmo *.cmi *.cma
+	@rm -f *.o *.js *.byte *.cmo *.cmi *.cma *.cmt *.cmti
