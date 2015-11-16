@@ -17,7 +17,7 @@ TARGET=ocp-reveal
 all: $(TARGET).cma
 
 $(TARGET).cma:
-	ocamlfind ocamlc $(PACKAGES) $(SYNTAXES) -linkpkg $(SOURCES) -a -o ocp-reveal.cma
+	ocamlfind ocamlc -bin-annot $(PACKAGES) $(SYNTAXES) -linkpkg $(SOURCES) -a -o ocp-reveal.cma
 
 clean:
 	@rm -f *.o *.js *.byte *.cmo *.cmi *.cma *.cmt *.cmti

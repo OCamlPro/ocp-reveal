@@ -21,6 +21,17 @@ let link_css url =
   link##rel <- _s "stylesheet";
   Dom.appendChild Dom_html.window##document##head link
 
+let link_theme url =
+  let id = "theme" in
+  Js.Opt.case (doc##getElementById (_s id))
+    (fun () ->
+      let link = Dom_html.createLink doc in
+      link##href <- _s url;
+      link##rel <- _s "stylesheet";
+      link##id <- _s id;
+      Dom.appendChild Dom_html.window##document##head link)
+   (fun _ -> ()) (* id already exist *)
+
 let script url =
   let script = Dom_html.createScript doc in
   script##src <- _s url;
@@ -32,31 +43,35 @@ let title str =
   title_el##text <- _s str;
   Dom.appendChild Dom_html.window##document##head title_el
 
-
 let header t =
   script reveal_head;
   script reveal_js;
+  title t;
   link_css reveal_css;
-  link_css reveal_theme;
-  link_css reveal_theme_white;
   link_css reveal_zenburn_css;
-  title t
+  link_css reveal_theme
 
 let rec mk_sections slides s =
   let open Slides in
   match slides with
   | Single (content, config) ->
     begin match config.theme with
-    | Black_theme -> ()
-    | Night_theme -> link_css night_theme
-    | Blood_theme -> link_css blood_theme
+    | White_theme -> link_theme white_theme
+    | Black_theme -> link_theme black_theme
+    | Night_theme -> link_theme night_theme
+    | Blood_theme -> link_theme blood_theme
+    | Custom s -> link_theme s
     end;
     let section = doc##createElement (_s "section") in
     section##setAttribute(_s "data-markdown", _s "");
     s##setAttribute(_s "data-transition",
                     _s (string_of_transition config.transition));
-    s##setAttribute(_s "data-background",
-                    _s (string_of_color config.background_color));
+    begin match config.background_color with
+    | None -> ()
+    | Some color ->
+      s##setAttribute(_s "data-background",
+                      _s (string_of_color color));
+    end;
     begin match config.background_img with
     | None -> ()
     | Some img_path ->
@@ -119,7 +134,6 @@ let body slides =
     slides;
   Dom.appendChild div_reveal div_slides;
   Dom.appendChild Dom_html.window##document##body div_reveal
-
 
 (* Automatically creates slides which was registered by the frame
    function and set the title of the presentation with [title]

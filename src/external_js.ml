@@ -18,12 +18,6 @@ let reveal_js =
 let reveal_css =
   "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"
 
-let reveal_theme =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/reveal.min.css"
-
-let reveal_theme_white =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css"
-
 let reveal_zenburn_css =
   "https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/css/zenburn.css"
 
@@ -57,6 +51,13 @@ let zoom_js =
 let remote_js =
   "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/remotes/remotes.js"
 
+let reveal_theme =
+  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/reveal.min.css"
+
+let ocamlpro_theme = "/home/cago/dev/ocp-reveal/theme/ocamlpro.css"
+
+let white_theme =
+  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css"
 
 let black_theme =
   "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/black.css"

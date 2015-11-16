@@ -20,7 +20,12 @@ type speed = Default | Fast | Slow
 
 type color = Black | White | Blue | Red | Green | Yellow | Color of string
 
-type theme = Black_theme | Night_theme | Blood_theme
+type theme =
+  Black_theme
+| White_theme
+| Night_theme
+| Blood_theme
+| Custom of string
 
 type path = string (* xxx maybe use a special type path ?  *)
 
@@ -30,7 +35,7 @@ type slide = {
   transition : transition;
   video: path option;
   text_color : color;                   (* xxx TODO *)
-  background_color : color;
+  background_color : color option;
   background_img : path option;
   background_video : path option;
   background_embed : path option;
@@ -70,8 +75,8 @@ let string_of_transition = function
 
 let string_of_speed = function
   | Default -> "default"
-  | Fast -> "fast"
-  | Slow -> "slow"
+  | Fast    -> "fast"
+  | Slow    -> "slow"
 
 let string_of_color = function
   | Black   -> "Black"
@@ -87,12 +92,12 @@ let default = {
   content = "";
   transition = Slide;
   video = None;
-  background_color = White;
+  background_color = None;
   text_color = Black;
   background_img = None;
   background_video = None;
   background_embed = None;
-  theme = Black_theme;
+  theme = Custom "./ocamlpro.css";
 }
 
 let slide = default

@@ -18,7 +18,12 @@ type speed = Default | Fast | Slow
 
 type color = Black | White | Blue | Red | Green | Yellow | Color of string
 
-type theme = Black_theme | Night_theme | Blood_theme
+type theme =
+  Black_theme
+| White_theme
+| Night_theme
+| Blood_theme
+| Custom of string
 
 type path = string
 
@@ -28,7 +33,7 @@ type slide = {
   transition : transition;
   video: path option;
   text_color : color;                   (* xxx TODO *)
-  background_color : color;
+  background_color : color option;
   background_img : path option;
   background_video : path option;
   background_embed : path option;
