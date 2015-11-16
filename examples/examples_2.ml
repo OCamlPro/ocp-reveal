@@ -41,7 +41,7 @@ type slide = {
 frame { default with
   title = title3 "Some video inside the slide !";
   video = Some "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
-  background_color = White;
+  background_color = Some White;
 };;
 
 (* New frame *)
@@ -52,7 +52,7 @@ Hey ! **How** are *you*
   1. first
   2. second
   3. third |};
-  background_color = Black;
+  background_color = Some Black;
 };;
 
 (* New frame *)
@@ -62,4 +62,4 @@ frame { slide with
 
 
 let _ =
-  Html.auto_make "Demo ocp-reveal - auto"
+  Html.auto_make_config "Demo ocp-reveal - auto"

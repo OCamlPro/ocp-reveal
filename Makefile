@@ -18,4 +18,4 @@ clean-ocp:
 clean:
 	$(MAKE) -C src clean
 	$(MAKE) -C examples clean
-	@rm -f js/*
+

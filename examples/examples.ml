@@ -57,7 +57,7 @@ let slide_video =
   frame { default with
     title = title3 "Some video inside the slide !";
     video = Some "http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4";
-    background_color = White;
+    background_color = Some White;
 
   }
 
@@ -66,7 +66,7 @@ let slide_2_0 =
   frame { default with
     title = title3 "Vertical slides !";
     content = " Hey slide down !";
-    background_color = Black;
+    background_color = Some Black;
   }
 
 let slide_2_1 =
@@ -77,7 +77,7 @@ Hey ! **How** are *you*
   1. first
   2. second
   3. third";
-    background_color = Black;
+    background_color = Some Black;
   }
 
 let slide_2 = Multiple [slide_2_0; slide_2_1]
@@ -93,12 +93,12 @@ let slide_4 =
     frame { slide with
       title = title3 \"Your slide title\";
       content = \"Some content\";
-      background_color = Black;
+      background_color = Some Black;
     }" in
   frame { slide with
     title = title3 "Black background";
     content;
-    background_color = Black;
+    background_color = Some Black;
   }
 
 let slide_5 =
@@ -107,12 +107,12 @@ let slide_5 =
     frame { slide with
       title = title3 \"Your slide title\";
       content = \"Some content\";
-      background_color = White;
+      background_color = Some White;
     }" in
   frame { slide with
     title = title3 "White background";
     content = content;
-    background_color = White;
+    background_color = Some White;
   }
 
 
@@ -127,7 +127,7 @@ let slide_6 =
   frame { convex with
     title = title3 "Add a background image to your slide";
     content;
-    background_color = White;
+    background_color = Some White;
     background_img = Some "../images/tux.png";
   }
 
@@ -135,7 +135,7 @@ let slide_7 =
   frame { convex with
     title = title3 "Math equations";
     content = {| $\delta \rightarrow \Lambda$ |};
-    background_color = Black;
+    background_color = Some Black;
   }
 
 let slides =

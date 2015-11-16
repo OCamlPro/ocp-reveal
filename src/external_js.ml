@@ -12,58 +12,35 @@
 (*                                                                           *)
 (*****************************************************************************)
 
-let reveal_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/js/reveal.js"
+let (/) = Filename.concat
 
-let reveal_css =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/reveal.css"
+let root = "../"
 
-let reveal_zenburn_css =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/css/zenburn.css"
+let js = root / "js"
+let css = root / "css"
+let theme = root / "theme"
 
-let reveal_head =
-  "https://cdn.jsdelivr.net/headjs/1.0.3/head.min.js"
+(* CSS files *)
+let reveal_css         = css / "reveal.css"
+let reveal_zenburn_css = css / "zenburn.css"
 
-let classList_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/lib/js/classList.js"
+(* JS files *)
+let reveal_js      = js / "reveal.js"
+let reveal_head    = js / "head.min.js"
+let classList_js   = js / "classList.js"
+let marked_js      = js / "marked.js"
+let markdown_js    = js / "markdown.js"
+let highlight_js   = js / "highlight.js"
+let note_js        = js / "notes.js"
+let note_client_js = js / "client.js"
+let math_js        = js / "math.js"
+let zoom_js        = js / "zoom.js"
+let remote_js      = js / "remotes.js"
 
-let marked_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/marked.js"
-
-let markdown_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/markdown/markdown.js"
-
-let highlight_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/highlight/highlight.js"
-
-let note_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes/notes.js"
-
-let note_client_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/notes-server/client.js"
-
-let math_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/math/math.js"
-
-let zoom_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/zoom-js/zoom.js"
-
-let remote_js =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/plugin/remotes/remotes.js"
-
-let reveal_theme =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/reveal.min.css"
-
-let ocamlpro_theme = "/home/cago/dev/ocp-reveal/theme/ocamlpro.css"
-
-let white_theme =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/white.css"
-
-let black_theme =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/black.css"
-
-let night_theme =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/night.css"
-
-let blood_theme =
-  "https://cdn.jsdelivr.net/reveal.js/3.0.0/css/theme/blood.css"
+(* Theme *)
+let reveal_theme   = theme / "reveal.min.css"
+let ocamlpro_theme = theme / "ocamlpro.css"
+let white_theme    = theme / "white.css"
+let black_theme    = theme / "black.css"
+let night_theme    = theme / "night.css"
+let blood_theme    = theme / "blood.css"
