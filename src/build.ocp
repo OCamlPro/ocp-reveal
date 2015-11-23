@@ -12,13 +12,16 @@
 (*                                                                           *)
 (*****************************************************************************)
 
+
 begin library "ocp-reveal"
-  has_asm = false
+    has_asm = false
+      sort = false
+  syntax = "js_of_ocaml.camlp4-syntax"
   files = [
     "external_js.ml"
     "js_utils.ml"
-    "reveal.ml"
     "slides.ml"
+    "reveal.ml"
     "html.ml"
   ]
   requires = [
