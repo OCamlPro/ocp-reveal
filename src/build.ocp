@@ -14,8 +14,7 @@
 
 
 begin library "ocp-reveal"
-    has_asm = false
-      sort = false
+  has_asm = false
   syntax = "js_of_ocaml.camlp4-syntax"
   files = [
     "external_js.ml"
