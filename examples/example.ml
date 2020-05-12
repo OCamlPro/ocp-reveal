@@ -1,6 +1,5 @@
-
-open Html
-open Slides
+open Ocp_reveal.Html
+open Ocp_reveal.Slides
 
 let slide_0 =
   frame { default with
@@ -128,7 +127,7 @@ let slide_6 =
     title = title3 "Add a background image to your slide";
     content;
     background_color = Some White;
-    background_img = Some "../images/tux.png";
+    background_img = Some "tux.png";
   }
 
 let slide_7 =
@@ -141,5 +140,5 @@ let slide_7 =
 let slides =
   [ slide_0; slide_00; slide_1; slide_video; slide_2; slide_3; slide_4; slide_5; slide_6; slide_7]
 
-let _ =
-  Html.make_config "Demo ocp-reveal" slides
+let () =
+  make_config "Demo ocp-reveal" slides

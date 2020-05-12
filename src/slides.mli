@@ -79,3 +79,5 @@ val slides_ref : slide_t list ref
 
 (** Create a new frame. *)
 val frame : slide -> slide_t
+
+val from_file : path -> Omd.t
