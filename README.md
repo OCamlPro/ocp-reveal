@@ -1,6 +1,6 @@
 # ocp-reveal
 
-OCaml bindings to [reveal.js](https://github.com/hakimel/reveal.js) library.
+OCaml bindings to [reveal.js] library.
 
 `Reveal.js` is a framework for easily creating beautiful presentations using
 HTML.
@@ -40,4 +40,6 @@ To start your own slides, you can have a look at the `examples` folder. It's jus
 [dune]: https://dune.build/
 [omd]: https://github.com/ocaml/omd
 [js_of_ocaml]: https://github.com/ocsigen/js_of_ocaml
-[online demo]: http://cagdas.bozman.fr/demo-ocp-reveal/#/
+[online demo]: https://cagdas.bozman.fr/demo-ocp-reveal/#/
+[opam]: https://opam.ocaml.org/
+[reveal.js]: https://github.com/hakimel/reveal.js
