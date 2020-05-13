@@ -14,7 +14,7 @@
 
 let (/) = Filename.concat
 
-let root = "../"
+let root = "./"
 
 let js = root / "js"
 let css = root / "css"

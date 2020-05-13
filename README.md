@@ -1,5 +1,6 @@
 # ocp-reveal
-A binding to [reveal.js](https://github.com/hakimel/reveal.js) library
+
+OCaml bindings to [reveal.js](https://github.com/hakimel/reveal.js) library.
 
 `Reveal.js` is a framework for easily creating beautiful presentations using
 HTML.
@@ -9,50 +10,34 @@ Markdown contents, PDF export, speaker notes and a JavaScript API. It's best
 viewed in a modern browser but fallbacks are available to make sure your
 presentation can still be viewed elsewhere.
 
-# Dependencies
+## Dependencies
 
-#### Manually
+ocp-reveal depends on [dune], [omd], [js_of_ocaml]. You can install them using [opam]:
 
-Download and install these packages:
+````sj
+opam install dune js_of_ocaml omd
+````````````
 
-* `ocp-build` : http://www.typerex.org/ocp-build.html
-* `omd` : http://www.typerex.org/ocp-build.html
-* `js_of_ocaml` : http://ocsigen.org/js_of_ocaml/
+## Usage
 
+This will build the library and the exemples.
 
-#### Using OPAM
-
-    $ opam install ocp-build js_of_ocaml omd
-
-# Build with Makefile
-
-    $ make examples
-
-# Build with ocp-build
-
-    $ make all-ocp
-
-# Example
-
-To try and see your slides, you can check an example in the `examples`
-directory:
-
-    $ make && firefox examples/example-1.html
-
- or you can see a demo at :
-
-    http://cagdas.bozman.fr/demo-ocp-reveal/#/
-
-# Start your own slides
-
-Compile your project, generate the JavaScript file and add it to your
-html file:
-
-```html
-<html>
-  <head></head>
-  <body>
-    <script src="PATH/TO/GENERATED/JSFILE"></script>
-  </body>
-</html>
+```sh
+dune build
 ```
+
+After building, you can see the examples with:
+
+```sh
+xdg-open _build/default/examples/example.html
+xdg-open _build/default/examples/example_2.html
+```
+
+You can also see an [online demo].
+
+To start your own slides, you can have a look at the `examples` folder. It's just a matter of creating an HTML file, an OCaml file and compiling.
+
+[dune]: https://dune.build/
+[omd]: https://github.com/ocaml/omd
+[js_of_ocaml]: https://github.com/ocsigen/js_of_ocaml
+[online demo]: http://cagdas.bozman.fr/demo-ocp-reveal/#/

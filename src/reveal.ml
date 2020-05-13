@@ -12,7 +12,10 @@
 (*                                                                           *)
 (*****************************************************************************)
 
-open Js_utils
+open Js_of_ocaml
+
+let doc = Dom_html.document
+let _s = Js.string
 
 type configuration = {
   controls              : bool;
@@ -110,18 +113,18 @@ let default_global_config = {
 
 let dep ?(async=None) ?(condition=None) ?(callback=None) src =
   let obj = Js.Unsafe.obj [||] in
-  obj##src <- _s src;
+  obj##.src := _s src;
   begin match async with
   | None -> ()
-  | Some async -> obj##async <- async
+  | Some async -> obj##.async := async
   end;
   begin match condition with
   | None -> ()
-  | Some condition -> obj##condition <- condition
+  | Some condition -> obj##.condition := condition
   end;
   begin match callback with
   | None -> ()
-  | Some callback -> obj##callback <- callback
+  | Some callback -> obj##.callback := callback
   end;
   obj
 
@@ -131,7 +134,7 @@ let initialize ?configuration:(c=default_global_config) () =
 
   (* Interpret latex math with MathJax *)
   let math : math Js.t = Js.Unsafe.obj [||] in
-  math##config <- _s "TeX-AMS_HTML-full";
+  math##.config := _s "TeX-AMS_HTML-full";
 
   let deps = Js.array [|
 
@@ -140,7 +143,7 @@ let initialize ?configuration:(c=default_global_config) () =
     dep
       ~async:None
       ~condition:(Some (fun () ->
-        doc##body##classList##length <> 0))
+        doc##.body##.classList##.length <> 0))
       classList_js;
 
     (** Interpret Markdown in <section> elements. *)
@@ -154,7 +157,7 @@ let initialize ?configuration:(c=default_global_config) () =
 
     (** Syntax highlight for <code> elements. *)
     dep
-      ~callback:(Some (fun () -> (Js.Unsafe.global##hljs)##initHighlighting()))
+      ~callback:(Some (fun () -> (Js.Unsafe.global##.hljs)##initHighlighting()))
       highlight_js;
 
     (** Speaker notes. *)
@@ -167,35 +170,36 @@ let initialize ?configuration:(c=default_global_config) () =
     dep ~async:(Some Js._true) zoom_js |] in
 
   let reveal : reveal Js.t = Js.Unsafe.obj [||] in
-  reveal##controls <- Js.bool c.controls;
-  reveal##progress <- Js.bool c.progress;
-  reveal##slideNumber <- Js.bool c.slide_number;
-  reveal##history <- Js.bool c.history;
-  reveal##keyboard <- Js.bool c.keyboard;
-  reveal##overview <- Js.bool c.overview;
-  reveal##center <- Js.bool c.center;
-  reveal##touch <- Js.bool c.touch;
-  reveal##loop <- Js.bool c.loop;
-  reveal##rtl <- Js.bool c.rtl;
-  reveal##fragments <- Js.bool c.fragments;
-  reveal##embedded <- Js.bool c.embedded;
-  reveal##help <- Js.bool c.help;
-  reveal##showNotes <- Js.bool c.show_notes;
-  reveal##autoSlide <- c.auto_slide;
-  reveal##autoSlideStoppable <- Js.bool c.auto_slide_stoppable;
-  reveal##mouseWheel <- Js.bool c.mouse_wheel;
-  reveal##hideAddressBar <- Js.bool c.hide_address_bar;
-  reveal##previewLinks <- Js.bool c.preview_links;
-  reveal##transition <- _s @@ Slides.string_of_transition c.transition;
-  reveal##transitionSpeed <- _s @@ Slides.string_of_speed c.transition_speed;
-  reveal##backgroundTransition <-
+  reveal##.controls := Js.bool c.controls;
+  reveal##.progress := Js.bool c.progress;
+  reveal##.slideNumber := Js.bool c.slide_number;
+  reveal##.history := Js.bool c.history;
+  reveal##.keyboard := Js.bool c.keyboard;
+  reveal##.overview := Js.bool c.overview;
+  reveal##.center := Js.bool c.center;
+  reveal##.touch := Js.bool c.touch;
+  reveal##.loop := Js.bool c.loop;
+  reveal##.rtl := Js.bool c.rtl;
+  reveal##.fragments := Js.bool c.fragments;
+  reveal##.embedded := Js.bool c.embedded;
+  reveal##.help := Js.bool c.help;
+  reveal##.showNotes := Js.bool c.show_notes;
+  reveal##.autoSlide := c.auto_slide;
+  reveal##.autoSlideStoppable := Js.bool c.auto_slide_stoppable;
+  reveal##.mouseWheel := Js.bool c.mouse_wheel;
+  reveal##.hideAddressBar := Js.bool c.hide_address_bar;
+  reveal##.previewLinks := Js.bool c.preview_links;
+  reveal##.transition := _s @@ Slides.string_of_transition c.transition;
+  reveal##.transitionSpeed := _s @@ Slides.string_of_speed c.transition_speed;
+  reveal##.backgroundTransition :=
     _s @@ Slides.string_of_transition c.background_transition;
-  reveal##viewDistance <- c.view_distance;
-  reveal##remote <- Js.bool c.remote;
-  reveal##math <- math;
-  reveal##dependencies <- deps;
+  reveal##.viewDistance := c.view_distance;
+  reveal##.remote := Js.bool c.remote;
+  reveal##.math := math;
+  reveal##.dependencies := deps;
 
   (* We have to wait until all initialization scripts are correctly loaded. *)
-  Dom_html.window##onload <-
+  Dom_html.window##.onload :=
     Dom_html.handler (fun _ ->
-      Js.Unsafe.global##_Reveal##initialize(reveal));
+      ignore (Js.Unsafe.global##.Reveal##initialize reveal);
+      Js.bool true);
