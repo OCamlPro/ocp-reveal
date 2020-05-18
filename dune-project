@@ -6,16 +6,16 @@
 
 (authors "Çagdas Bozman")
 
-(maintainers "Çagdas Bozman")
+(maintainers "OCamlPro <contact@ocamlpro.com>")
 
 (source
- (uri git://github.com/OCamlPro-Bozman/ocp-reveal.git))
+ (uri git://github.com/OCamlPro/ocp-reveal.git))
 
-(bug_reports https://github.com/OCamlPro-Bozman/ocp-reveal/issues)
+(bug_reports https://github.com/OCamlPro/ocp-reveal/issues)
 
-(homepage https://github.com/OCamlPro-Bozman/ocp-reveal)
+(homepage https://github.com/OCamlPro/ocp-reveal)
 
-(documentation github.com/OCamlPro-Bozman/ocp-reveal)
+(documentation github.com/OCamlPro/ocp-reveal)
 
 (generate_opam_files true)
 

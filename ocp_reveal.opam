@@ -2,12 +2,12 @@
 opam-version: "2.0"
 synopsis: "OCaml bindings for Reveal.js, an HTML presentation framework"
 description: "OCaml bindings for Reveal.js, an HTML presentation framework"
-maintainer: ["Çagdas Bozman"]
+maintainer: ["OCamlPro <contact@ocamlpro.com>"]
 authors: ["Çagdas Bozman"]
 license: "LGPL"
-homepage: "https://github.com/OCamlPro-Bozman/ocp-reveal"
-doc: "github.com/OCamlPro-Bozman/ocp-reveal"
-bug-reports: "https://github.com/OCamlPro-Bozman/ocp-reveal/issues"
+homepage: "https://github.com/OCamlPro/ocp-reveal"
+doc: "github.com/OCamlPro/ocp-reveal"
+bug-reports: "https://github.com/OCamlPro/ocp-reveal/issues"
 depends: [
   "ocaml" {>= "4.05"}
   "dune" {>= "2.5"}
@@ -29,4 +29,4 @@ build: [
     "@doc" {with-doc}
   ]
 ]
-dev-repo: "git://github.com/OCamlPro-Bozman/ocp-reveal.git"
+dev-repo: "git://github.com/OCamlPro/ocp-reveal.git"
